@@ -1,0 +1,12 @@
+WCF Service Backend: 
+
+> Editor - Visual Studio 2019
+> Code Style - Code Formatter
+> Lint Tool - SonarLint
+> Test Coverage - PrestoCoverage
+> Code Duplication - Simian
+
+Design:
+
+> Documentation - Github
+> Class Diagram - StarUML
