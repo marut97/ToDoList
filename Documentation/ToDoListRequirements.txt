@@ -1,4 +1,4 @@
-> a to do list
+To Do List Requirements:
 > 4 modes:
   * Daily routines
   * Work for today
