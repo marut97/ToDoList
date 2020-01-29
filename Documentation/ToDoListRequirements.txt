@@ -1,0 +1,14 @@
+To Do List Requirements:
+> 4 modes:
+  * Daily routines
+  * Work for today
+  * Work for the week/month
+  * Long term goals
+> reminders
+> cross platform
+> linked to google account
+> local database
+> each reminder has notes, a reminder(optional), title
+> wcf rest api with polling, probably every hour
+> time based reminder with set time. postponing of time has to be handled in client.
+> desktop app will only show reminder. in mobile app, will be able to tell if task is completed or needs to be postponed.
