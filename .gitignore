@@ -2,4 +2,5 @@ Documentation/WcfBackend/~$erStories.docx
 Source/ToDoListService/.vs
 Source/ToDoListService/Database/DatabaseCreator/bin
 Source/ToDoListService/Database/DatabaseCreator/obj
-
+Source/ToDoListService/Test/Unit/ToDoListServiceTest/bin
+Source/ToDoListService/Test/Unit/ToDoListServiceTest/obj
