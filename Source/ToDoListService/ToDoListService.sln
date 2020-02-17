@@ -1,0 +1,71 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29503.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ToDoListServiceHost", "ToDoListServiceHost\", "{88F6EDC0-0891-4BAC-9C50-7C3C2B515BFC}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.7.2"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_65275"
+		Debug.AspNetCompiler.PhysicalPath = "ToDoListServiceHost\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_65275\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_65275"
+		Release.AspNetCompiler.PhysicalPath = "ToDoListServiceHost\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_65275\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "65275"
+		SlnRelativePath = "ToDoListServiceHost\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Host", "Host", "{6FD80A1D-4C02-41B7-80B3-AA6B69848BC0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{880721D0-8BD1-43A8-8D41-7002248BA238}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseCreator", "Database\DatabaseCreator\DatabaseCreator.csproj", "{75D59CCD-5A59-4B22-A03C-706E652341FC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{A9B16F6F-AA36-4B89-B089-41F7EF974783}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit", "Unit", "{299DDD10-08D8-412C-AC45-44A4E827D6E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoListServiceTest", "Test\Unit\ToDoListServiceTest\ToDoListServiceTest.csproj", "{4FE01E2C-9217-437F-957E-9F1140C15F61}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{88F6EDC0-0891-4BAC-9C50-7C3C2B515BFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88F6EDC0-0891-4BAC-9C50-7C3C2B515BFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88F6EDC0-0891-4BAC-9C50-7C3C2B515BFC}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{88F6EDC0-0891-4BAC-9C50-7C3C2B515BFC}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{75D59CCD-5A59-4B22-A03C-706E652341FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75D59CCD-5A59-4B22-A03C-706E652341FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75D59CCD-5A59-4B22-A03C-706E652341FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75D59CCD-5A59-4B22-A03C-706E652341FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FE01E2C-9217-437F-957E-9F1140C15F61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FE01E2C-9217-437F-957E-9F1140C15F61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FE01E2C-9217-437F-957E-9F1140C15F61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FE01E2C-9217-437F-957E-9F1140C15F61}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{88F6EDC0-0891-4BAC-9C50-7C3C2B515BFC} = {6FD80A1D-4C02-41B7-80B3-AA6B69848BC0}
+		{75D59CCD-5A59-4B22-A03C-706E652341FC} = {880721D0-8BD1-43A8-8D41-7002248BA238}
+		{299DDD10-08D8-412C-AC45-44A4E827D6E1} = {A9B16F6F-AA36-4B89-B089-41F7EF974783}
+		{4FE01E2C-9217-437F-957E-9F1140C15F61} = {299DDD10-08D8-412C-AC45-44A4E827D6E1}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EAC15EA3-BF91-4F4C-9702-EE8BDCBEF5EA}
+	EndGlobalSection
+EndGlobal
