@@ -6,3 +6,7 @@ Source/ToDoListService/Database/DatabaseCreator/obj
 Source/ToDoListService/Test/Unit/ToDoListServiceTest/bin
 Source/ToDoListService/Test/Unit/ToDoListServiceTest/obj
 Source/ToDoListService/packages
+Source/ToDoListService/Interfaces/IDatabase/obj
+Source/ToDoListService/Interfaces/IDatabase/bin
+Source/ToDoListService/Lib/Lib/obj
+Source/ToDoListService/Lib/Lib/bin
