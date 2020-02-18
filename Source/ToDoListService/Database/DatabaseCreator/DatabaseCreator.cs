@@ -7,27 +7,28 @@ namespace ToDoListService.DatabaseCreator
         static void Main(string[] args)
         {
             SQLiteConnection.CreateFile("ToDoListDatabase.sqlite");
-            SQLiteConnection m_dbConnection = new SQLiteConnection("Data Source=ToDoListDatabase.sqlite;Version=3;");
-            m_dbConnection.Open();
+            SQLiteConnection dbConnection = new SQLiteConnection("Data Source=ToDoListDatabase.sqlite;Version=3;");
+            dbConnection.Open();
 
-            string sql = "CREATE TABLE ToDoListData ("       +
+            string sql = "CREATE TABLE ToDoListAuthentication ("     +
+                            "Username VARCHAR(20) NOT NULL UNIQUE,"  +
+                            "Password VARCHAR(50) NOT NULL)"         ;
+
+            SQLiteCommand command = new SQLiteCommand(sql, dbConnection);
+            command.ExecuteNonQuery();
+
+            sql = "CREATE TABLE ToDoListData ("              +
                             "Mode INT NOT NULL, "            +
-                            "Title VARCHAR(50) NOT NULL, "   +
-                            "Notes VARCHAR(MAX), "           +
+                            "Title VARCHAR(50) NOT NULL, " +
+                            "Notes VARCHAR(500), " +
                             "Reminder DATETIME, "            +
-                            "Username VARCHAR(20) NOT NULL FOREIGN_KEY REFERENCES ToDoListAuthentication(Username))";
+                            "Username VARCHAR(20) NOT NULL," +
+                            "FOREIGN KEY(Username) REFERENCES ToDoListAuthentication(Username))";
 
-            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
+            command = new SQLiteCommand(sql, dbConnection);
             command.ExecuteNonQuery();
 
-            sql = "CREATE TABLE ToDoListAuthentication (" +
-                    "Username VARCHAR(20) NOT NULL" + 
-                    "Password VARCHAR(20) NOT NULL)";
-
-            command = new SQLiteCommand(sql, m_dbConnection);
-            command.ExecuteNonQuery();
-
-            m_dbConnection.Close();
+            dbConnection.Close();
         }
     }
 }
