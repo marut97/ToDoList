@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29503.13
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ToDoListServiceHost", "ToDoListServiceHost\", "{88F6EDC0-0891-4BAC-9C50-7C3C2B515BFC}"
 	ProjectSection(WebsiteProperties) = preProject
@@ -37,6 +37,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit", "Unit", "{299DDD10-0
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoListServiceTest", "Test\Unit\ToDoListServiceTest\ToDoListServiceTest.csproj", "{4FE01E2C-9217-437F-957E-9F1140C15F61}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{3F771ACF-C395-46EB-AB4A-0CF5B7384E1F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lib", "Lib\Lib\Lib.csproj", "{2EE63C51-51AB-4489-8FB8-2038706A5CFF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Interfaces", "Interfaces", "{BB31EDEA-17AA-43A0-82A1-3669C8C3EC50}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IDatabase", "Interfaces\IDatabase\IDatabase.csproj", "{39A02495-04B9-4CE6-A772-A2B4C9A39A73}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +63,14 @@ Global
 		{4FE01E2C-9217-437F-957E-9F1140C15F61}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FE01E2C-9217-437F-957E-9F1140C15F61}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FE01E2C-9217-437F-957E-9F1140C15F61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EE63C51-51AB-4489-8FB8-2038706A5CFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EE63C51-51AB-4489-8FB8-2038706A5CFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EE63C51-51AB-4489-8FB8-2038706A5CFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EE63C51-51AB-4489-8FB8-2038706A5CFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39A02495-04B9-4CE6-A772-A2B4C9A39A73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39A02495-04B9-4CE6-A772-A2B4C9A39A73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39A02495-04B9-4CE6-A772-A2B4C9A39A73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39A02495-04B9-4CE6-A772-A2B4C9A39A73}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,6 +80,8 @@ Global
 		{75D59CCD-5A59-4B22-A03C-706E652341FC} = {880721D0-8BD1-43A8-8D41-7002248BA238}
 		{299DDD10-08D8-412C-AC45-44A4E827D6E1} = {A9B16F6F-AA36-4B89-B089-41F7EF974783}
 		{4FE01E2C-9217-437F-957E-9F1140C15F61} = {299DDD10-08D8-412C-AC45-44A4E827D6E1}
+		{2EE63C51-51AB-4489-8FB8-2038706A5CFF} = {3F771ACF-C395-46EB-AB4A-0CF5B7384E1F}
+		{39A02495-04B9-4CE6-A772-A2B4C9A39A73} = {BB31EDEA-17AA-43A0-82A1-3669C8C3EC50}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EAC15EA3-BF91-4F4C-9702-EE8BDCBEF5EA}
