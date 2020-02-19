@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Lib")]
+[assembly: AssemblyTitle("ToDoListDatabase")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Lib")]
+[assembly: AssemblyProduct("ToDoListDatabase")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("2ee63c51-51ab-4489-8fb8-2038706a5cff")]
+[assembly: Guid("f2f2a7d6-5052-426a-97c6-5d0c7c2234da")]
 
 // Version information for an assembly consists of the following four values:
 //
