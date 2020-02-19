@@ -1,0 +1,6 @@
+C:\Users\320052456\Personal\Projects\ToDoList\Source\ToDoListService\Interfaces\IAuthenticationRepository\bin\Debug\IAuthenticationRepository.dll
+C:\Users\320052456\Personal\Projects\ToDoList\Source\ToDoListService\Interfaces\IAuthenticationRepository\bin\Debug\IAuthenticationRepository.pdb
+C:\Users\320052456\Personal\Projects\ToDoList\Source\ToDoListService\Interfaces\IAuthenticationRepository\obj\Debug\IAuthenticationRepository.csprojAssemblyReference.cache
+C:\Users\320052456\Personal\Projects\ToDoList\Source\ToDoListService\Interfaces\IAuthenticationRepository\obj\Debug\IAuthenticationRepository.csproj.CoreCompileInputs.cache
+C:\Users\320052456\Personal\Projects\ToDoList\Source\ToDoListService\Interfaces\IAuthenticationRepository\obj\Debug\IAuthenticationRepository.dll
+C:\Users\320052456\Personal\Projects\ToDoList\Source\ToDoListService\Interfaces\IAuthenticationRepository\obj\Debug\IAuthenticationRepository.pdb
