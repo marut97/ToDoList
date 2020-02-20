@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SQLite;
 using ToDoListService.Interfaces.IAuthenticationRepository;
 
 namespace ToDoListService.Lib.AuthenticationRepository
@@ -13,9 +14,9 @@ namespace ToDoListService.Lib.AuthenticationRepository
         public AuthenticationRepository(bool test = false)
         {
             if (test)
-                m_databasePath = "C:\\ToDoListDatabase\\Test\\";
+                m_databasePath = "C:\\ToDoListDatabase\\Test\\ToDoListDatabase.sqlite";
             else
-                m_databasePath = "C:\\ToDoListDatabase\\";
+                m_databasePath = "C:\\ToDoListDatabase\\ToDoListDatabase.sqlite";
 
 
 
@@ -48,7 +49,25 @@ namespace ToDoListService.Lib.AuthenticationRepository
 
         private bool AddUser(string username, string password)
         {
-            throw new NotImplementedException();
+            SQLiteConnection dbConnection = new SQLiteConnection("Data Source=" + m_databasePath + ";Version=3;"); 
+            try
+            {
+                dbConnection.Open();
+                var cmd = new SQLiteCommand(dbConnection)
+                {
+                    CommandText = "INSERT INTO ToDoListAuthentication(Username, Password) VALUES("+username+","+password+")"
+                };
+
+                cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception e)
+            {
+                //throw fault exception
+                dbConnection.Close();
+                return false;
+            }
+            
         }
 
         private bool UserExists(string username)
