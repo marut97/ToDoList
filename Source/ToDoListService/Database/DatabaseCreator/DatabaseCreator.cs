@@ -33,8 +33,8 @@ namespace ToDoListService.DatabaseCreator
                   "Title VARCHAR(50) NOT NULL, " +
                   "Notes VARCHAR(500), " +
                   "Reminder DATETIME, " +
-                  "Username VARCHAR(20) NOT NULL," +
-                  "FOREIGN KEY(Username) REFERENCES ToDoListAuthentication(Username))";
+                  "UserID INT NOT NULL," +
+                  "FOREIGN KEY(UserID) REFERENCES ToDoListAuthentication(ID))";
 
             SQLiteCommand command = new SQLiteCommand(sql, dbConnection);
             command.ExecuteNonQuery();
@@ -48,6 +48,7 @@ namespace ToDoListService.DatabaseCreator
             dbConnection.Open();
 
             string sql = "CREATE TABLE ToDoListAuthentication (" +
+                         "ID INTEGER PRIMARY KEY AUTOINCREMENT," +
                          "Username VARCHAR(20) NOT NULL UNIQUE," +
                          "Password VARCHAR(50) NOT NULL)";
 
