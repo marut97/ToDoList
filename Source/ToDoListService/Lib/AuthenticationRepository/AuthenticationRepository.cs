@@ -41,7 +41,7 @@ namespace ToDoListService.Lib.AuthenticationRepository
             foreach (char c in password)
             {
                 var index = characterSet.IndexOf(c);
-                encryptedPassword= encryptedPassword+encryptionSet.ElementAt(index);
+                encryptedPassword += encryptionSet[index];
             }
 
             return encryptedPassword;

@@ -10,3 +10,15 @@ Source/ToDoListService/Interfaces/IDatabase/obj
 Source/ToDoListService/Interfaces/IDatabase/bin
 Source/ToDoListService/Lib/Lib/obj
 Source/ToDoListService/Lib/Lib/bin
+Source/ToDoListService/Lib/AuthenticationRepository/obj
+Source/ToDoListService/Lib/AuthenticationRepository/bin
+Source/ToDoListService/Lib/ToDoListDatabase/obj
+Source/ToDoListService/Lib/ToDoListDatabase/bin
+Source/ToDoListService/Controllers/AuthenticationService/obj
+Source/ToDoListService/Controllers/AuthenticationService/bin
+Source/ToDoListService/Controllers/ToDoListDataService/obj
+Source/ToDoListService/Controllers/ToDoListDataService/bin
+Source/ToDoListService/Interfaces/IAuthenticationRepository/obj
+Source/ToDoListService/Interfaces/IAuthenticationRepository/bin
+Source/ToDoListService/Interfaces/IToDoListDataRepository/obj
+Source/ToDoListService/Interfaces/IToDoListDataRepository/bin
