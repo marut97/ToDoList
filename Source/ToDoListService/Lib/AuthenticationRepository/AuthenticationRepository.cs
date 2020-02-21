@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SQLite;
+﻿using System.Data.SQLite;
 using ToDoListService.Interfaces.IAuthenticationRepository;
 
 namespace ToDoListService.Lib.AuthenticationRepository
@@ -25,7 +20,7 @@ namespace ToDoListService.Lib.AuthenticationRepository
             {
                 return false;
             }
-            return AddUser(username, Encrypt(password));
+            return AddUser(username, password);
         }
 
         private string Encrypt(string password)
@@ -52,13 +47,13 @@ namespace ToDoListService.Lib.AuthenticationRepository
                 dbConnection.Open();
                 var cmd = new SQLiteCommand(dbConnection)
                 {
-                    CommandText = "INSERT INTO ToDoListAuthentication(Username, Password) VALUES("+username+","+password+")"
+                    CommandText = "INSERT INTO ToDoListAuthentication(Username, Password) VALUES('"+username+"','"+ Encrypt(password) + "')"
                 };
 
                 cmd.ExecuteNonQuery();
                 return true;
             }
-            catch (Exception e)
+            catch (SQLiteException e)
             {
                 //throw fault exception
                 dbConnection.Close();
@@ -70,56 +65,137 @@ namespace ToDoListService.Lib.AuthenticationRepository
         private bool UserExists(string username)
         {
             bool userExists = false;
-            SQLiteConnection dbConnection = new SQLiteConnection(m_connectionString);
+
             try
             {
-                dbConnection.Open();
-                var cmd = new SQLiteCommand(dbConnection)
+                using (var dbConnection = new SQLiteConnection(m_connectionString))
                 {
-                    CommandText = "SELECT ID FROM ToDoListAuthentication WHERE Username = "+username
-                };
-
-                SQLiteDataReader reader = cmd.ExecuteReader();
-
-                if (reader.Read())
-                {
-                    userExists = true;
+                    dbConnection.Open();
+                    using (var cmd = new SQLiteCommand(dbConnection))
+                    {
+                        cmd.CommandText = "SELECT ID FROM ToDoListAuthentication WHERE Username = '" + username + "';";
+                        userExists = AuthenticateQuery(cmd);
+                    }
                 }
-                reader.Close();
-                dbConnection.Close();
                 return userExists;
             }
-            catch (Exception e)
+            catch (SQLiteException e)
             {
                 //throw fault exception
-                dbConnection.Close();
                 return false;
             }
         }
 
         public bool Login(string username, string password)
         {
-            throw new NotImplementedException();
+            bool loggedIn = false;
+            try
+            {
+                using (var dbConnection = new SQLiteConnection(m_connectionString))
+                {
+                    dbConnection.Open();
+                    using (var cmd = new SQLiteCommand(dbConnection))
+                    {
+                        cmd.CommandText = "SELECT ID FROM ToDoListAuthentication WHERE Username = '" + username + "' AND Password = '" + Encrypt(password) + "';";
+                        loggedIn = AuthenticateQuery(cmd);
+                    }
+                }
+                return loggedIn;
+            }
+            catch (SQLiteException e)
+            {
+                //throw fault exception
+                return false;
+            }
+        }
+
+        private static bool AuthenticateQuery(SQLiteCommand cmd)
+        {
+            using (var reader = cmd.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    if (reader.GetInt32(0) > 0)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
         }
 
         public bool Logout(string username)
         {
-            throw new NotImplementedException();
+            if (UserExists(username))
+                return true;
+            return false;
         }
 
         public bool DeleteUser(string username, string password)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (SQLiteConnection dbConnection = new SQLiteConnection(m_connectionString))
+                {
+                    dbConnection.Open();
+                    using (SQLiteCommand cmd = new SQLiteCommand(dbConnection))
+                    {
+                        cmd.CommandText = "DELETE FROM ToDoListAuthentication WHERE Username = '" + username + "' AND Password = '" + Encrypt(password) + "';";
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                return true;
+            }
+            catch (SQLiteException e)
+            {
+                //throw fault exception
+                return false;
+            }
         }
 
         public bool UpdateUsername(string oldUsername, string password, string newUsername)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (SQLiteConnection dbConnection = new SQLiteConnection(m_connectionString))
+                {
+                    dbConnection.Open();
+                    using (SQLiteCommand cmd = new SQLiteCommand(dbConnection))
+                    {
+                        cmd.CommandText = "UPDATE ToDoListAuthentication SET Username = '"+newUsername+"' WHERE Username = '"+oldUsername+"' AND Password = '"+ Encrypt(password) + "';";
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                return true;
+            }
+            catch (SQLiteException e)
+            {
+                //throw fault exception
+                return false;
+            }
         }
 
         public bool UpdatePassword(string username, string oldPassword, string newPassword)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (SQLiteConnection dbConnection = new SQLiteConnection(m_connectionString))
+                {
+                    dbConnection.Open();
+                    using (SQLiteCommand cmd = new SQLiteCommand(dbConnection))
+                    {
+                        cmd.CommandText = "UPDATE ToDoListAuthentication SET Password = '" + Encrypt(newPassword) + "' WHERE Username = '" + username + "' AND Password = '" + Encrypt(oldPassword) + "';";
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                return true;
+            }
+            catch (SQLiteException e)
+            {
+                //throw fault exception
+                return false;
+            }
         }
     }
 }
