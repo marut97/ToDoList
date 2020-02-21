@@ -10,16 +10,13 @@ namespace ToDoListService.Lib.AuthenticationRepository
 {
     public class AuthenticationRepository : IAuthenticationRepository
     {
-        private string m_databasePath;
+        private readonly string m_connectionString;
         public AuthenticationRepository(bool test = false)
         {
             if (test)
-                m_databasePath = "C:\\ToDoListDatabase\\Test\\ToDoListDatabase.sqlite";
+                m_connectionString = "Data Source=C:\\ToDoListDatabase\\Test\\ToDoListDatabase.sqlite;Version=3;";
             else
-                m_databasePath = "C:\\ToDoListDatabase\\ToDoListDatabase.sqlite";
-
-
-
+                m_connectionString = "Data Source=C:\\ToDoListDatabase\\ToDoListDatabase.sqlite;Version=3;";
         }
 
         public bool RegisterUser(string username, string password)
@@ -49,7 +46,7 @@ namespace ToDoListService.Lib.AuthenticationRepository
 
         private bool AddUser(string username, string password)
         {
-            SQLiteConnection dbConnection = new SQLiteConnection("Data Source=" + m_databasePath + ";Version=3;"); 
+            SQLiteConnection dbConnection = new SQLiteConnection(m_connectionString); 
             try
             {
                 dbConnection.Open();
@@ -72,7 +69,32 @@ namespace ToDoListService.Lib.AuthenticationRepository
 
         private bool UserExists(string username)
         {
-            throw new NotImplementedException();
+            bool userExists = false;
+            SQLiteConnection dbConnection = new SQLiteConnection(m_connectionString);
+            try
+            {
+                dbConnection.Open();
+                var cmd = new SQLiteCommand(dbConnection)
+                {
+                    CommandText = "SELECT ID FROM ToDoListAuthentication WHERE Username = "+username
+                };
+
+                SQLiteDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    userExists = true;
+                }
+                reader.Close();
+                dbConnection.Close();
+                return userExists;
+            }
+            catch (Exception e)
+            {
+                //throw fault exception
+                dbConnection.Close();
+                return false;
+            }
         }
 
         public bool Login(string username, string password)
