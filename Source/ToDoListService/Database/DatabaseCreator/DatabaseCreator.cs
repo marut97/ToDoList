@@ -21,6 +21,7 @@ namespace ToDoListService.DatabaseCreator
             InitializeAuthenticationDatabase(databasePath);
             InitializeAuthenticationDatabase(testDatabasePath);
             InitializeToDoListDatabase(databasePath);
+            InitializeToDoListDatabase(testDatabasePath);
         }
 
         private void InitializeToDoListDatabase(string path)

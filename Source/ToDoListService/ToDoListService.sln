@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.136
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29503.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ToDoListServiceHost", "ToDoListServiceHost\", "{88F6EDC0-0891-4BAC-9C50-7C3C2B515BFC}"
 	ProjectSection(WebsiteProperties) = preProject
@@ -57,6 +57,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IAuthenticationRepository",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationRepository", "Lib\AuthenticationRepository\AuthenticationRepository.csproj", "{06FB7FBA-74F7-4998-BA14-0A1F76E2A402}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationRepositoryTest", "Test\Unit\AuthenticationRepositoryTest\AuthenticationRepositoryTest.csproj", "{211BA453-FA12-42CE-8C8C-5BD521E99D0B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -103,6 +105,10 @@ Global
 		{06FB7FBA-74F7-4998-BA14-0A1F76E2A402}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06FB7FBA-74F7-4998-BA14-0A1F76E2A402}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06FB7FBA-74F7-4998-BA14-0A1F76E2A402}.Release|Any CPU.Build.0 = Release|Any CPU
+		{211BA453-FA12-42CE-8C8C-5BD521E99D0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{211BA453-FA12-42CE-8C8C-5BD521E99D0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{211BA453-FA12-42CE-8C8C-5BD521E99D0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{211BA453-FA12-42CE-8C8C-5BD521E99D0B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -119,6 +125,7 @@ Global
 		{3CF3E61B-0848-4BA0-871A-A78DEE462017} = {BB31EDEA-17AA-43A0-82A1-3669C8C3EC50}
 		{41990183-8752-4C30-B65C-C8CE0DB7A196} = {BB31EDEA-17AA-43A0-82A1-3669C8C3EC50}
 		{06FB7FBA-74F7-4998-BA14-0A1F76E2A402} = {3F771ACF-C395-46EB-AB4A-0CF5B7384E1F}
+		{211BA453-FA12-42CE-8C8C-5BD521E99D0B} = {299DDD10-08D8-412C-AC45-44A4E827D6E1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EAC15EA3-BF91-4F4C-9702-EE8BDCBEF5EA}
