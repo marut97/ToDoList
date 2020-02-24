@@ -18,7 +18,7 @@ namespace ToDoListService.Test.Unit.AuthenticationRepositoryTest
         [TestMethod]
         public void ValidRegister()
         {
-            var username = "testUserName";
+            var username = "testUsername";
             var password = "testPassword";
             Assert.IsTrue(m_authenticationRepository.RegisterUser(username, password));
 
@@ -30,7 +30,7 @@ namespace ToDoListService.Test.Unit.AuthenticationRepositoryTest
             password = "test123456789!@#$%&*<>?";
             Assert.IsTrue(m_authenticationRepository.RegisterUser(username, password));
 
-            username = "testUserName3";
+            username = "testUsername3";
             password = "testPassword";
             Assert.IsTrue(m_authenticationRepository.RegisterUser(username, password));
         }
@@ -38,7 +38,7 @@ namespace ToDoListService.Test.Unit.AuthenticationRepositoryTest
         [TestMethod]
         public void InvalidRegister()
         {
-            var username = "testUserName";
+            var username = "testUsername";
             var password = "testPassword";
             Assert.IsTrue(m_authenticationRepository.RegisterUser(username, password));
             password = "anotherPW";
@@ -46,6 +46,116 @@ namespace ToDoListService.Test.Unit.AuthenticationRepositoryTest
             
             password = "testPassword";
             Assert.IsFalse(m_authenticationRepository.RegisterUser(username, password));
+        }
+
+        [TestMethod]
+        public void ValidLogin()
+        {
+            ValidRegister();
+
+            Assert.IsTrue(m_authenticationRepository.Login("testUsername", "testPassword"));
+            Assert.IsTrue(m_authenticationRepository.Login("testUsername3", "testPassword"));
+        }
+
+        [TestMethod]
+        public void InvalidLogin()
+        {
+            ValidRegister();
+
+            Assert.IsFalse(m_authenticationRepository.Login("testUsername", ""));
+            Assert.IsFalse(m_authenticationRepository.Login("testUsername", "TestPassword"));
+            Assert.IsFalse(m_authenticationRepository.Login("TestUsername", "testPassword"));
+            Assert.IsFalse(m_authenticationRepository.Login("", "testPassword"));
+            Assert.IsFalse(m_authenticationRepository.Login("*", "testPassword"));
+            Assert.IsFalse(m_authenticationRepository.Login("testUserNam?", "testPassword"));
+        }
+
+        [TestMethod]
+        public void ValidDelete()
+        {
+            ValidRegister();
+
+            Assert.IsTrue(m_authenticationRepository.DeleteUser("testUsername", "testPassword"));
+            Assert.IsTrue(m_authenticationRepository.DeleteUser("testUsername1", "test123456789"));
+            Assert.IsTrue(m_authenticationRepository.DeleteUser("testUsername2", "test123456789!@#$%&*<>?"));
+            Assert.IsTrue(m_authenticationRepository.DeleteUser("testUsername3", "testPassword"));
+        }
+
+        [TestMethod]
+        public void InvalidDelete()
+        {
+            ValidRegister();
+
+            Assert.IsFalse(m_authenticationRepository.DeleteUser("testUsername", "*"));
+            Assert.IsFalse(m_authenticationRepository.DeleteUser("testUsername1", "test1234567890"));
+            Assert.IsFalse(m_authenticationRepository.DeleteUser("testUsername2", "test123456789!@#$%&*<>??"));
+            Assert.IsFalse(m_authenticationRepository.DeleteUser("testUsername3", "testPasswor?"));
+            Assert.IsFalse(m_authenticationRepository.DeleteUser("testUserNam?", "testPassword"));
+            Assert.IsFalse(m_authenticationRepository.DeleteUser("*", "testPassword"));
+            Assert.IsFalse(m_authenticationRepository.DeleteUser("", "testPassword"));
+        }
+
+        [TestMethod]
+        public void ValidUpdateUsername()
+        {
+            ValidRegister();
+
+            Assert.IsTrue(m_authenticationRepository.UpdateUsername("testUsername", "testPassword", "newTestUsername"));
+            Assert.IsTrue(m_authenticationRepository.Login("newTestUsername", "testPassword"));
+            Assert.IsTrue(m_authenticationRepository.UpdateUsername("testUsername1", "test123456789", "newTestUsername1"));
+            Assert.IsTrue(m_authenticationRepository.Login("newTestUsername1", "test123456789"));
+            Assert.IsTrue(m_authenticationRepository.UpdateUsername("testUsername2", "test123456789!@#$%&*<>?", "newTestUsername2"));
+            Assert.IsTrue(m_authenticationRepository.Login("newTestUsername2", "test123456789!@#$%&*<>?"));
+            Assert.IsTrue(m_authenticationRepository.UpdateUsername("testUsername3", "testPassword", "newTestUsername3"));
+            Assert.IsTrue(m_authenticationRepository.Login("newTestUsername3", "testPassword"));
+        }
+
+        [TestMethod]
+        public void InvalidUpdateUsername()
+        {
+            ValidRegister();
+
+            Assert.IsFalse(m_authenticationRepository.UpdateUsername("testUsername?", "testPasswor?", "newTestUsername"));
+            Assert.IsFalse(m_authenticationRepository.Login("newTestUsername", "testPassword"));
+
+            Assert.IsFalse(m_authenticationRepository.UpdateUsername("testUsername?", "", "newTestUsername"));
+            Assert.IsFalse(m_authenticationRepository.Login("newTestUsername", "testPassword"));
+
+            Assert.IsFalse(m_authenticationRepository.UpdateUsername("", "testPassword", "newTestUsername"));
+            Assert.IsFalse(m_authenticationRepository.Login("newTestUsername", "testPassword"));
+        }
+
+        [TestMethod]
+        public void ValidUpdatePassword()
+        {
+            ValidRegister();
+
+            Assert.IsTrue(m_authenticationRepository.UpdatePassword("testUsername", "testPassword", "newTestPassword"));
+            Assert.IsTrue(m_authenticationRepository.Login("testUsername", "newTestPassword"));
+
+            Assert.IsTrue(m_authenticationRepository.UpdatePassword("testUsername1", "test123456789", "newTestPassword1234!@#$"));
+            Assert.IsTrue(m_authenticationRepository.Login("testUsername1", "newTestPassword1234!@#$"));
+
+            Assert.IsTrue(m_authenticationRepository.UpdatePassword("testUsername2", "test123456789!@#$%&*<>?", "newTestPassword!@#"));
+            Assert.IsTrue(m_authenticationRepository.Login("testUsername2", "newTestPassword!@#"));
+
+            Assert.IsTrue(m_authenticationRepository.UpdatePassword("testUsername3", "testPassword", "newTestPassword1234"));
+            Assert.IsTrue(m_authenticationRepository.Login("testUsername3", "newTestPassword1234"));
+        }
+
+        [TestMethod]
+        public void InvalidUpdatePassword()
+        {
+            ValidRegister();
+
+            Assert.IsFalse(m_authenticationRepository.UpdatePassword("testUsername?", "testPasswor?", "newTestPassword"));
+            Assert.IsFalse(m_authenticationRepository.Login("testUsername", "newTestPassword"));
+
+            Assert.IsFalse(m_authenticationRepository.UpdatePassword("testUsername?", "", "newTestUsername"));
+            Assert.IsFalse(m_authenticationRepository.Login("testUsername", "newTestPassword"));
+
+            Assert.IsFalse(m_authenticationRepository.UpdatePassword("", "testPassword", "newTestUsername"));
+            Assert.IsFalse(m_authenticationRepository.Login("testUsername", "newTestPassword"));
         }
 
         [TestCleanup]

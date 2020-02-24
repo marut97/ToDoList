@@ -55,16 +55,17 @@ namespace ToDoListService.Lib.AuthenticationRepository
         {
             try
             {
+                int rows = 0;
                 using (SQLiteConnection dbConnection = new SQLiteConnection(m_connectionString))
                 {
                     dbConnection.Open();
                     using (SQLiteCommand cmd = new SQLiteCommand(dbConnection))
                     {
                         cmd.CommandText = "DELETE FROM ToDoListAuthentication WHERE Username = '" + username + "' AND Password = '" + Encrypt(password) + "';";
-                        cmd.ExecuteNonQuery();
+                        rows = cmd.ExecuteNonQuery();
                     }
                 }
-                return true;
+                return (rows>0);
             }
             catch (SQLiteException e)
             {
@@ -75,18 +76,21 @@ namespace ToDoListService.Lib.AuthenticationRepository
 
         public bool UpdateUsername(string oldUsername, string password, string newUsername)
         {
+            if (UserExists(newUsername))
+                return false;
             try
             {
+                int rows = 0;
                 using (SQLiteConnection dbConnection = new SQLiteConnection(m_connectionString))
                 {
                     dbConnection.Open();
                     using (SQLiteCommand cmd = new SQLiteCommand(dbConnection))
                     {
                         cmd.CommandText = "UPDATE ToDoListAuthentication SET Username = '"+newUsername+"' WHERE Username = '"+oldUsername+"' AND Password = '"+ Encrypt(password) + "';";
-                        cmd.ExecuteNonQuery();
+                        rows = cmd.ExecuteNonQuery();
                     }
                 }
-                return true;
+                return (rows>0);
             }
             catch (SQLiteException e)
             {
@@ -99,16 +103,17 @@ namespace ToDoListService.Lib.AuthenticationRepository
         {
             try
             {
+                int rows = 0;
                 using (SQLiteConnection dbConnection = new SQLiteConnection(m_connectionString))
                 {
                     dbConnection.Open();
                     using (SQLiteCommand cmd = new SQLiteCommand(dbConnection))
                     {
                         cmd.CommandText = "UPDATE ToDoListAuthentication SET Password = '" + Encrypt(newPassword) + "' WHERE Username = '" + username + "' AND Password = '" + Encrypt(oldPassword) + "';";
-                        cmd.ExecuteNonQuery();
+                        rows = cmd.ExecuteNonQuery();
                     }
                 }
-                return true;
+                return (rows>0);
             }
             catch (SQLiteException e)
             {
@@ -138,16 +143,17 @@ namespace ToDoListService.Lib.AuthenticationRepository
         {
             try
             {
+                int rows = 0;
                 using (SQLiteConnection dbConnection = new SQLiteConnection(m_connectionString))
                 {
                     dbConnection.Open();
                     using (SQLiteCommand cmd = new SQLiteCommand(dbConnection))
                     {
                         cmd.CommandText = "INSERT INTO ToDoListAuthentication(Username, Password) VALUES('" + username + "','" + Encrypt(password) + "');";
-                        cmd.ExecuteNonQuery();
+                        rows = cmd.ExecuteNonQuery();
                     }
                 }
-                return true;
+                return (rows>0);
             }
             catch (SQLiteException e)
             {
