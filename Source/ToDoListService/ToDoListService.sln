@@ -59,6 +59,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationRepository", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationRepositoryTest", "Test\Unit\AuthenticationRepositoryTest\AuthenticationRepositoryTest.csproj", "{211BA453-FA12-42CE-8C8C-5BD521E99D0B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{1ECDE6EB-5C19-4053-9A20-65AC99AA71CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoListData", "Data\ToDoListData\ToDoListData.csproj", "{EA3CA710-AE40-476D-82C0-C5C249744151}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -109,6 +113,10 @@ Global
 		{211BA453-FA12-42CE-8C8C-5BD521E99D0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{211BA453-FA12-42CE-8C8C-5BD521E99D0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{211BA453-FA12-42CE-8C8C-5BD521E99D0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA3CA710-AE40-476D-82C0-C5C249744151}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA3CA710-AE40-476D-82C0-C5C249744151}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA3CA710-AE40-476D-82C0-C5C249744151}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA3CA710-AE40-476D-82C0-C5C249744151}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -126,6 +134,7 @@ Global
 		{41990183-8752-4C30-B65C-C8CE0DB7A196} = {BB31EDEA-17AA-43A0-82A1-3669C8C3EC50}
 		{06FB7FBA-74F7-4998-BA14-0A1F76E2A402} = {3F771ACF-C395-46EB-AB4A-0CF5B7384E1F}
 		{211BA453-FA12-42CE-8C8C-5BD521E99D0B} = {299DDD10-08D8-412C-AC45-44A4E827D6E1}
+		{EA3CA710-AE40-476D-82C0-C5C249744151} = {1ECDE6EB-5C19-4053-9A20-65AC99AA71CA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EAC15EA3-BF91-4F4C-9702-EE8BDCBEF5EA}
