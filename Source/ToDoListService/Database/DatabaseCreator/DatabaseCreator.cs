@@ -53,13 +53,15 @@ namespace ToDoListService.DatabaseCreator
             SQLiteConnection dbConnection = new SQLiteConnection("Data Source=" + path + "ToDoListDatabase.sqlite;Version=3;");
             dbConnection.Open();
 
-            string sql = "CREATE TABLE ToDoListDataTable (" +
-                  "TaskID INT PRIMARY KEY AUTOINCREMENT,"   +
-                  "Mode INT NOT NULL, "                     +
-                  "Title VARCHAR(50) NOT NULL, "            +
-                  "Notes VARCHAR(500), "                    +
-                  "UserID INT NOT NULL,"                    +
-                  "FOREIGN KEY(UserID) REFERENCES ToDoListAuthenticationTable(UserID))";
+            string sql = "CREATE TABLE ToDoListDataTable ("             +
+                         "TaskID INT PRIMARY KEY AUTOINCREMENT,"        +
+                         "Mode INT NOT NULL, "                          +
+                         "Title VARCHAR(50) NOT NULL, "                 +
+                         "Notes VARCHAR(500), "                         +
+                         "UserID INT NOT NULL,"                         +
+                         "UnderModification INT NOT NULL DEFAULT 0,"    +
+                         "DateModified DATETIME NOT NULL,"              +
+                         "FOREIGN KEY(UserID) REFERENCES ToDoListAuthenticationTable(UserID))";
 
             SQLiteCommand command = new SQLiteCommand(sql, dbConnection);
             command.ExecuteNonQuery();
