@@ -24,3 +24,5 @@ Source/ToDoListService/Interfaces/IToDoListDataRepository/obj
 Source/ToDoListService/Interfaces/IToDoListDataRepository/bin
 Source/ToDoListService/Test/Unit/AuthenticationRepositoryTest/obj
 Source/ToDoListService/Test/Unit/AuthenticationRepositoryTest/bin
+Source/ToDoListService/Data/ToDoListData/obj
+Source/ToDoListService/Data/ToDoListData/bin
