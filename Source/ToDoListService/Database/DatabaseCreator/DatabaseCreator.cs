@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Data.SQLite;
 using System.IO;
 using System.Runtime.CompilerServices;
@@ -22,6 +23,29 @@ namespace ToDoListService.DatabaseCreator
             InitializeAuthenticationDatabase(testDatabasePath);
             InitializeToDoListDatabase(databasePath);
             InitializeToDoListDatabase(testDatabasePath);
+            InitializeReminderDatabase(databasePath);
+            InitializeReminderDatabase(testDatabasePath);
+        }
+
+        private void InitializeReminderDatabase(string path)
+        {
+            SQLiteConnection dbConnection = new SQLiteConnection("Data Source=" + path + "ToDoListDatabase.sqlite;Version=3;");
+            dbConnection.Open();
+
+            string sql = "CREATE TABLE TaskReminderTable (" +
+                          "TaskID INT NOT NULL,"            +
+                          "ReminderType INT NOT NULL,"      +
+                          "StartTime DATETIME NOT NULL,"    +
+                          "EndTime DATETIME NOT NULL,"      +
+                          "Repeat INT NOT NULL,"            +
+                          "RepeatTime DATETIME NOT NULL,"   +
+                          "RepeatDays VARCHAR(7) NOTNULL,"   +
+                          "FOREIGN KEY(TaskID) ToDoListDataTable(TaskID) ";
+
+            SQLiteCommand command = new SQLiteCommand(sql, dbConnection);
+            command.ExecuteNonQuery();
+
+            dbConnection.Close();
         }
 
         private void InitializeToDoListDatabase(string path)
@@ -29,13 +53,13 @@ namespace ToDoListService.DatabaseCreator
             SQLiteConnection dbConnection = new SQLiteConnection("Data Source=" + path + "ToDoListDatabase.sqlite;Version=3;");
             dbConnection.Open();
 
-            string sql = "CREATE TABLE ToDoListData (" +
-                  "Mode INT NOT NULL, " +
-                  "Title VARCHAR(50) NOT NULL, " +
-                  "Notes VARCHAR(500), " +
-                  "Reminder DATETIME, " +
-                  "UserID INT NOT NULL," +
-                  "FOREIGN KEY(UserID) REFERENCES ToDoListAuthentication(ID))";
+            string sql = "CREATE TABLE ToDoListDataTable (" +
+                  "TaskID INT PRIMARY KEY AUTOINCREMENT,"   +
+                  "Mode INT NOT NULL, "                     +
+                  "Title VARCHAR(50) NOT NULL, "            +
+                  "Notes VARCHAR(500), "                    +
+                  "UserID INT NOT NULL,"                    +
+                  "FOREIGN KEY(UserID) REFERENCES ToDoListAuthenticationTable(UserID))";
 
             SQLiteCommand command = new SQLiteCommand(sql, dbConnection);
             command.ExecuteNonQuery();
@@ -48,8 +72,8 @@ namespace ToDoListService.DatabaseCreator
             SQLiteConnection dbConnection = new SQLiteConnection("Data Source=" + path + "ToDoListDatabase.sqlite;Version=3;");
             dbConnection.Open();
 
-            string sql = "CREATE TABLE ToDoListAuthentication (" +
-                         "ID INTEGER PRIMARY KEY AUTOINCREMENT," +
+            string sql = "CREATE TABLE ToDoListAuthenticationTable (" +
+                         "UserID INTEGER PRIMARY KEY AUTOINCREMENT," +
                          "Username VARCHAR(20) NOT NULL UNIQUE," +
                          "Password VARCHAR(50) NOT NULL)";
 

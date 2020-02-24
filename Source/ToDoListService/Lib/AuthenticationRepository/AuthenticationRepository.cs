@@ -31,7 +31,7 @@ namespace ToDoListService.Lib.AuthenticationRepository
                     dbConnection.Open();
                     using (var cmd = new SQLiteCommand(dbConnection))
                     {
-                        cmd.CommandText = "SELECT ID FROM ToDoListAuthentication WHERE Username = '" + username + "' AND Password = '" + Encrypt(password) + "';";
+                        cmd.CommandText = "SELECT ID FROM ToDoListAuthenticationTable WHERE Username = '" + username + "' AND Password = '" + Encrypt(password) + "';";
                         loggedIn = AuthenticateQuery(cmd);
                     }
                 }
@@ -61,7 +61,7 @@ namespace ToDoListService.Lib.AuthenticationRepository
                     dbConnection.Open();
                     using (SQLiteCommand cmd = new SQLiteCommand(dbConnection))
                     {
-                        cmd.CommandText = "DELETE FROM ToDoListAuthentication WHERE Username = '" + username + "' AND Password = '" + Encrypt(password) + "';";
+                        cmd.CommandText = "DELETE FROM ToDoListAuthenticationTable WHERE Username = '" + username + "' AND Password = '" + Encrypt(password) + "';";
                         rows = cmd.ExecuteNonQuery();
                     }
                 }
@@ -86,7 +86,7 @@ namespace ToDoListService.Lib.AuthenticationRepository
                     dbConnection.Open();
                     using (SQLiteCommand cmd = new SQLiteCommand(dbConnection))
                     {
-                        cmd.CommandText = "UPDATE ToDoListAuthentication SET Username = '"+newUsername+"' WHERE Username = '"+oldUsername+"' AND Password = '"+ Encrypt(password) + "';";
+                        cmd.CommandText = "UPDATE ToDoListAuthenticationTable SET Username = '"+newUsername+"' WHERE Username = '"+oldUsername+"' AND Password = '"+ Encrypt(password) + "';";
                         rows = cmd.ExecuteNonQuery();
                     }
                 }
@@ -109,7 +109,7 @@ namespace ToDoListService.Lib.AuthenticationRepository
                     dbConnection.Open();
                     using (SQLiteCommand cmd = new SQLiteCommand(dbConnection))
                     {
-                        cmd.CommandText = "UPDATE ToDoListAuthentication SET Password = '" + Encrypt(newPassword) + "' WHERE Username = '" + username + "' AND Password = '" + Encrypt(oldPassword) + "';";
+                        cmd.CommandText = "UPDATE ToDoListAuthenticationTable SET Password = '" + Encrypt(newPassword) + "' WHERE Username = '" + username + "' AND Password = '" + Encrypt(oldPassword) + "';";
                         rows = cmd.ExecuteNonQuery();
                     }
                 }
@@ -149,7 +149,7 @@ namespace ToDoListService.Lib.AuthenticationRepository
                     dbConnection.Open();
                     using (SQLiteCommand cmd = new SQLiteCommand(dbConnection))
                     {
-                        cmd.CommandText = "INSERT INTO ToDoListAuthentication(Username, Password) VALUES('" + username + "','" + Encrypt(password) + "');";
+                        cmd.CommandText = "INSERT INTO ToDoListAuthenticationTable(Username, Password) VALUES('" + username + "','" + Encrypt(password) + "');";
                         rows = cmd.ExecuteNonQuery();
                     }
                 }
@@ -174,7 +174,7 @@ namespace ToDoListService.Lib.AuthenticationRepository
                     dbConnection.Open();
                     using (var cmd = new SQLiteCommand(dbConnection))
                     {
-                        cmd.CommandText = "SELECT ID FROM ToDoListAuthentication WHERE Username = '" + username + "';";
+                        cmd.CommandText = "SELECT ID FROM ToDoListAuthenticationTable WHERE Username = '" + username + "';";
                         userExists = AuthenticateQuery(cmd);
                     }
                 }
