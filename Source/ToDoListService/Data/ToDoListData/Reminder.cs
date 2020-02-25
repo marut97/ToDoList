@@ -22,5 +22,7 @@ namespace ToDoListService.Data.ToDoListData
         [DataMember]
         public string RepeatDays { get; set; }
 
+        [DataMember]
+        public int ReminderID { get; set; }
     }
 }
