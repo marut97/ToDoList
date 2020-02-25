@@ -9,15 +9,21 @@ namespace ToDoListService.Interfaces.IToDoListDataRepository
 {
     public interface IToDoListDataRepository
     {
-        bool CreateToDoTask(int userID, ToDoListDataModel data);
-
-        bool DeleteToDoTask(int userID, ToDoListDataModel data);
-
-        bool UpdateToDoTask(int userID, ToDoListDataModel data);
-
         bool StartTaskEditing(int userID, int taskID);
 
         bool EndTaskEditing(int userID, int taskID);
+
+        bool CreateToDoListTask(int userID, ToDoListDataModel data);
+
+        bool DeleteToDoListTask(int userID, ToDoListDataModel data);
+
+        bool UpdateToDoListTask(int userID, ToDoListDataModel data);
+
+        ToDoListDataModel ReadToDoList(int userID, int taskID);
+
+        List<ToDoListDataModel> ReadAllToDoList(int userID);
+
+        List<ToDoListDataModel> ReadToDoList(int userID, ToDoListDataModel query);
 
         bool CreateReminder(int userID, Reminder reminderData);
 
@@ -29,12 +35,5 @@ namespace ToDoListService.Interfaces.IToDoListDataRepository
 
         Reminder ReadReminder(int userID, int reminderID);
 
-        List<Reminder> ReadReminders(int userID, int taskID, ReminderType type);
-
-        ToDoListDataModel ReadToDoList(int userID, int taskID);
-
-        List<ToDoListDataModel> ReadAllToDoList(int userID);
-
-        List<ToDoListDataModel> ReadToDoList(int userID, ToDoListDataModel query);
     }
 }
