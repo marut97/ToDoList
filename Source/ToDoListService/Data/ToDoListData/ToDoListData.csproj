@@ -42,7 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Reminder.cs" />
     <Compile Include="ListMode.cs" />
+    <Compile Include="ReminderType.cs" />
     <Compile Include="ToDoListData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

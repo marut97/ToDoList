@@ -35,8 +35,6 @@ namespace ToDoListService.DatabaseCreator
             string sql = "CREATE TABLE TaskReminderTable (" +
                           "TaskID INT NOT NULL,"            +
                           "ReminderType INT NOT NULL,"      +
-                          "StartTime DATETIME NOT NULL,"    +
-                          "EndTime DATETIME NOT NULL,"      +
                           "Repeat INT NOT NULL,"            +
                           "RepeatTime DATETIME NOT NULL,"   +
                           "RepeatDays VARCHAR(7) NOTNULL,"   +
@@ -61,6 +59,8 @@ namespace ToDoListService.DatabaseCreator
                          "UserID INT NOT NULL,"                         +
                          "UnderModification INT NOT NULL DEFAULT 0,"    +
                          "DateModified DATETIME NOT NULL,"              +
+                         "StartTime DATETIME NOT NULL,"                 +
+                         "EndTime DATETIME NOT NULL,"                   +
                          "FOREIGN KEY(UserID) REFERENCES ToDoListAuthenticationTable(UserID))";
 
             SQLiteCommand command = new SQLiteCommand(sql, dbConnection);

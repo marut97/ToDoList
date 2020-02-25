@@ -1,4 +1,6 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Collections.Generic;
+using System.Runtime.Serialization;
 using ToDoListData;
 
 namespace ToDoListService.Data.ToDoListData
@@ -16,9 +18,21 @@ namespace ToDoListService.Data.ToDoListData
         public string Notes { get; set; }
 
         [DataMember]
-        public string Reminder { get; set; }
+        public List<Reminder> Reminders { get; set; }
 
         [DataMember]
         public string Username { get; set; }
+
+        [DataMember]
+        public bool UnderModification { get; set; }
+
+        [DataMember]
+        public DateTime DateModified { get; set; }
+
+        [DataMember]
+        public DateTime StartDate { get; set; }
+
+        [DataMember]
+        public DateTime EndDate { get; set; }
     }
 }
