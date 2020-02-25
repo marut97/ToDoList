@@ -131,16 +131,16 @@ namespace ToDoListService.Test.Unit.AuthenticationRepositoryTest
             ValidRegister();
 
             Assert.IsTrue(m_authenticationRepository.UpdatePassword("testUsername", "testPassword", "newTestPassword"));
-            Assert.IsTrue(m_authenticationRepository.Login("testUsername", "newTestPassword")>0);
+            Assert.AreNotEqual(m_authenticationRepository.Login("testUsername", "newTestPassword"), 0);
 
             Assert.IsTrue(m_authenticationRepository.UpdatePassword("testUsername1", "test123456789", "newTestPassword1234!@#$"));
-            Assert.IsTrue(m_authenticationRepository.Login("testUsername1", "newTestPassword1234!@#$")>0);
+            Assert.AreNotEqual(m_authenticationRepository.Login("testUsername1", "newTestPassword1234!@#$"),0);
 
             Assert.IsTrue(m_authenticationRepository.UpdatePassword("testUsername2", "test123456789!@#$%&*<>?", "newTestPassword!@#"));
-            Assert.IsTrue(m_authenticationRepository.Login("testUsername2", "newTestPassword!@#")>0);
+            Assert.AreNotEqual(m_authenticationRepository.Login("testUsername2", "newTestPassword!@#"),0);
 
             Assert.IsTrue(m_authenticationRepository.UpdatePassword("testUsername3", "testPassword", "newTestPassword1234"));
-            Assert.IsTrue(m_authenticationRepository.Login("testUsername3", "newTestPassword1234")>0);
+            Assert.AreNotEqual(m_authenticationRepository.Login("testUsername3", "newTestPassword1234"),0);
         }
 
         [TestMethod]
@@ -149,13 +149,13 @@ namespace ToDoListService.Test.Unit.AuthenticationRepositoryTest
             ValidRegister();
 
             Assert.IsFalse(m_authenticationRepository.UpdatePassword("testUsername?", "testPasswor?", "newTestPassword"));
-            Assert.IsFalse(m_authenticationRepository.Login("testUsername", "newTestPassword")>0);
+            Assert.AreEqual(m_authenticationRepository.Login("testUsername", "newTestPassword"),0);
 
             Assert.IsFalse(m_authenticationRepository.UpdatePassword("testUsername?", "", "newTestUsername"));
-            Assert.IsFalse(m_authenticationRepository.Login("testUsername", "newTestPassword")>0);
+            Assert.AreEqual(m_authenticationRepository.Login("testUsername", "newTestPassword"),0);
 
             Assert.IsFalse(m_authenticationRepository.UpdatePassword("", "testPassword", "newTestUsername"));
-            Assert.IsFalse(m_authenticationRepository.Login("testUsername", "newTestPassword")>0);
+            Assert.AreEqual(m_authenticationRepository.Login("testUsername", "newTestPassword"),0);
         }
 
         [TestCleanup]
