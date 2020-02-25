@@ -75,9 +75,9 @@ namespace ToDoListService.DatabaseCreator
             SQLiteConnection dbConnection = new SQLiteConnection("Data Source=" + path + "ToDoListDatabase.sqlite;Version=3;");
             dbConnection.Open();
 
-            string sql = "CREATE TABLE ToDoListAuthenticationTable (" +
-                         "UserID INTEGER PRIMARY KEY AUTOINCREMENT," +
-                         "Username VARCHAR(20) NOT NULL UNIQUE," +
+            string sql = "CREATE TABLE ToDoListAuthenticationTable ("   +
+                         "UserID INTEGER PRIMARY KEY AUTOINCREMENT,"    +
+                         "Username VARCHAR(20) NOT NULL UNIQUE,"        +
                          "Password VARCHAR(50) NOT NULL)";
 
             SQLiteCommand command = new SQLiteCommand(sql, dbConnection);
