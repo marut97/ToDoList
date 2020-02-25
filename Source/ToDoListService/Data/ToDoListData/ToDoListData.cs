@@ -6,7 +6,7 @@ using ToDoListData;
 namespace ToDoListService.Data.ToDoListData
 {
     [DataContract]
-    public struct ToDoListData
+    public struct ToDoListDataModel
     {
         [DataMember]
         public ListMode ListMode { get; set; }
@@ -18,7 +18,7 @@ namespace ToDoListService.Data.ToDoListData
         public string Notes { get; set; }
 
         [DataMember]
-        public List<Reminder> Reminders { get; set; }
+        public List<int> ReminderIDs { get; set; }
 
         [DataMember]
         public bool UnderModification { get; set; }
