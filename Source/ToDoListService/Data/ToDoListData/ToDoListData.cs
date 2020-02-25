@@ -21,9 +21,6 @@ namespace ToDoListService.Data.ToDoListData
         public List<Reminder> Reminders { get; set; }
 
         [DataMember]
-        public string Username { get; set; }
-
-        [DataMember]
         public bool UnderModification { get; set; }
 
         [DataMember]
@@ -34,5 +31,8 @@ namespace ToDoListService.Data.ToDoListData
 
         [DataMember]
         public DateTime EndDate { get; set; }
+
+        [DataMember]
+        public int TaskID { get; set; }
     }
 }

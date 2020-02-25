@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace ToDoListService.Interfaces.IToDoListDataRepository
 {
-    public class IToDoListDataRepository
+    public interface IToDoListDataRepository
     {
+        bool CreateToDoEntry(string username, Data.ToDoListData.ToDoListData data);
+
+        bool DeleteToDoEntry(string username, Data.ToDoListData.ToDoListData data);
+
+        bool UpdateToDoEntry(string username, Data.ToDoListData.ToDoListData data);
+
+        bool UpdateReminder()
     }
 }
