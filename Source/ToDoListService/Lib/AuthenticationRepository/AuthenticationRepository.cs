@@ -21,26 +21,26 @@ namespace ToDoListService.Lib.AuthenticationRepository
             }
             return AddUser(username, password);
         }
-        public bool Login(string username, string password)
+        public int Login(string username, string password)
         {
-            bool loggedIn = false;
             try
             {
+                var userID = 0;
                 using (var dbConnection = new SQLiteConnection(m_connectionString))
                 {
                     dbConnection.Open();
                     using (var cmd = new SQLiteCommand(dbConnection))
                     {
                         cmd.CommandText = "SELECT ID FROM ToDoListAuthenticationTable WHERE Username = '" + username + "' AND Password = '" + Encrypt(password) + "';";
-                        loggedIn = AuthenticateQuery(cmd);
+                        userID = AuthenticateQuery(cmd);
                     }
                 }
-                return loggedIn;
+                return userID;
             }
             catch (SQLiteException e)
             {
                 //throw fault exception
-                return false;
+                return 0;
             }
         }
 
@@ -165,17 +165,16 @@ namespace ToDoListService.Lib.AuthenticationRepository
 
         private bool UserExists(string username)
         {
-            bool userExists = false;
-
             try
             {
+                var userExists = false;
                 using (var dbConnection = new SQLiteConnection(m_connectionString))
                 {
                     dbConnection.Open();
                     using (var cmd = new SQLiteCommand(dbConnection))
                     {
                         cmd.CommandText = "SELECT ID FROM ToDoListAuthenticationTable WHERE Username = '" + username + "';";
-                        userExists = AuthenticateQuery(cmd);
+                        userExists = (AuthenticateQuery(cmd)>0);
                     }
                 }
                 return userExists;
@@ -187,19 +186,16 @@ namespace ToDoListService.Lib.AuthenticationRepository
             }
         }
 
-        private static bool AuthenticateQuery(SQLiteCommand cmd)
+        private static int AuthenticateQuery(SQLiteCommand cmd)
         {
             using (var reader = cmd.ExecuteReader())
             {
                 if (reader.Read())
                 {
-                    if (reader.GetInt32(0) > 0)
-                    {
-                        return true;
-                    }
+                    return reader.GetInt32(0);
                 }
             }
-            return false;
+            return 0;
         }
 
         private readonly string m_connectionString;
