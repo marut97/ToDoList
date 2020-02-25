@@ -33,11 +33,12 @@ namespace ToDoListService.DatabaseCreator
             dbConnection.Open();
 
             string sql = "CREATE TABLE TaskReminderTable (" +
-                          "TaskID INT NOT NULL,"            +
-                          "ReminderType INT NOT NULL,"      +
-                          "Repeat INT NOT NULL,"            +
-                          "RepeatTime DATETIME NOT NULL,"   +
-                          "RepeatDays VARCHAR(7) NOTNULL,"   +
+                          "ReminderID INT NOT NULL AUTOINCREMENT," +
+                          "TaskID INT NOT NULL,"                   +
+                          "ReminderType INT NOT NULL,"             +
+                          "Repeat INT NOT NULL,"                   +
+                          "ReminderTime DATETIME NOT NULL,"        +
+                          "RepeatDays VARCHAR(7) NOTNULL,"         +
                           "FOREIGN KEY(TaskID) ToDoListDataTable(TaskID) ";
 
             SQLiteCommand command = new SQLiteCommand(sql, dbConnection);
