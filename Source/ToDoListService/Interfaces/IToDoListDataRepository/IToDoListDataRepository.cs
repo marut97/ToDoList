@@ -23,17 +23,17 @@ namespace ToDoListService.Interfaces.IToDoListDataRepository
 
         List<ToDoListDataModel> ReadAllToDoList(int userID);
 
-        List<ToDoListDataModel> ReadToDoList(int userID, ToDoListDataModel query);
+        List<ToDoListDataModel> ReadToDoLists(int userID, ToDoListDataModel query);
 
-        bool CreateReminder(int userID, Reminder reminderData);
+        bool CreateReminder(int taskID, Reminder reminderData);
 
-        bool UpdateReminder(int userID, Reminder reminderData);
+        bool UpdateReminder(int taskID, Reminder reminderData);
 
-        bool DeleteReminder(int userID, int reminderID);
+        bool DeleteReminder(int taskID, int reminderID);
 
         List<Reminder> ReadAllReminders(int userID, int taskID);
 
-        Reminder ReadReminder(int userID, int reminderID);
+        Reminder ReadReminder(int taskID, int reminderID);
 
     }
 }

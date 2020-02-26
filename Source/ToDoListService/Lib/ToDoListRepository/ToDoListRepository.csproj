@@ -44,5 +44,15 @@
     <Compile Include="ToDoListRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\ToDoListData\ToDoListData.csproj">
+      <Project>{ea3ca710-ae40-476d-82c0-c5c249744151}</Project>
+      <Name>ToDoListData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Interfaces\IToDoListDataRepository\IToDoListDataRepository.csproj">
+      <Project>{3cf3e61b-0848-4ba0-871a-a78dee462017}</Project>
+      <Name>IToDoListDataRepository</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
