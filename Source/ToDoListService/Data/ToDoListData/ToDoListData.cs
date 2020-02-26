@@ -18,7 +18,7 @@ namespace ToDoListService.Data.ToDoListData
         public string Notes { get; set; }
 
         [DataMember]
-        public List<int> ReminderIDs { get; set; }
+        public List<Reminder> Reminders { get; set; }
 
         [DataMember]
         public bool UnderModification { get; set; }

@@ -153,7 +153,7 @@ namespace ToDoListService.Lib.AuthenticationRepository
                         rows = cmd.ExecuteNonQuery();
                     }
                 }
-                return (rows>0);
+                return (rows==1);
             }
             catch (SQLiteException e)
             {
