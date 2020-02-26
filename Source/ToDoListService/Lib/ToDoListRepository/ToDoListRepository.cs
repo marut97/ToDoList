@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using ToDoListService.Interfaces.IToDoListDataRepository;
 using ToDoListService.Data.ToDoListData;
+using System.Data.SQLite;
 
 namespace ToDoListService.Lib.ToDoListRepository
 {
@@ -15,22 +16,7 @@ namespace ToDoListService.Lib.ToDoListRepository
                 m_connectionString = "Data Source=C:\\ToDoListDatabase\\ToDoListDatabase.sqlite;Version=3;";
         }
 
-        public bool CreateReminder(int taskID, Reminder reminderData)
-        {
-            
-        }
-
-        public bool CreateToDoListTask(int userID, ToDoListDataModel data)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool DeleteReminder(int userID, int reminderID)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool DeleteToDoListTask(int userID, ToDoListDataModel data)
+        public bool StartTaskEditing(int userID, int taskID)
         {
             throw new NotImplementedException();
         }
@@ -40,17 +26,17 @@ namespace ToDoListService.Lib.ToDoListRepository
             throw new NotImplementedException();
         }
 
-        public List<Reminder> ReadAllReminders(int userID, int taskID)
+        public bool CreateToDoListTask(int userID, ToDoListDataModel data)
         {
             throw new NotImplementedException();
         }
 
-        public List<ToDoListDataModel> ReadAllToDoList(int userID)
+        public bool DeleteToDoListTask(int userID, ToDoListDataModel data)
         {
             throw new NotImplementedException();
         }
 
-        public Reminder ReadReminder(int userID, int reminderID)
+        public bool UpdateToDoListTask(int userID, ToDoListDataModel data)
         {
             throw new NotImplementedException();
         }
@@ -60,26 +46,42 @@ namespace ToDoListService.Lib.ToDoListRepository
             throw new NotImplementedException();
         }
 
-        public List<ToDoListDataModel> ReadToDoList(int userID, ToDoListDataModel query)
+        public List<ToDoListDataModel> ReadAllToDoList(int userID)
         {
             throw new NotImplementedException();
         }
 
-        public bool StartTaskEditing(int userID, int taskID)
+        public List<ToDoListDataModel> ReadToDoLists(int userID, ToDoListDataModel query)
         {
             throw new NotImplementedException();
         }
 
-        public bool UpdateReminder(int userID, Reminder reminderData)
+        public bool CreateReminder(int taskID, Reminder reminderData)
         {
             throw new NotImplementedException();
         }
 
-        public bool UpdateToDoListTask(int userID, ToDoListService.Data.ToDoListData.ToDoListDataModel data)
+        public bool UpdateReminder(int taskID, Reminder reminderData)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool DeleteReminder(int taskID, int reminderID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Reminder> ReadAllReminders(int userID, int taskID)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Reminder ReadReminder(int taskID, int reminderID)
         {
             throw new NotImplementedException();
         }
 
         private readonly string m_connectionString;
+
     }
 }
