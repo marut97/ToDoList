@@ -90,12 +90,49 @@ namespace ToDoListService.Lib.ToDoListRepository
 
         public bool DeleteToDoListTask(int userID, ToDoListDataModel data)
         {
-            throw new NotImplementedException();
+            try
+            {
+                int rowsAffected = 0;
+                using (SQLiteConnection dbConnection = new SQLiteConnection(m_connectionString))
+                {
+                    dbConnection.Open();
+                    using (SQLiteCommand cmd = new SQLiteCommand(dbConnection))
+                    {
+                        cmd.CommandText = "DELETE FROM ToDoListDataTable WHERE UserID = '" + userID + "' AND TaskID = '" + data.TaskID + "';";
+                        rowsAffected = cmd.ExecuteNonQuery();
+                    }
+                }
+                return (rowsAffected == 1);
+            }
+            catch (SQLiteException e)
+            {
+                //throw fault exception
+                return false;
+            }
         }
 
         public bool UpdateToDoListTask(int userID, ToDoListDataModel data)
         {
-            throw new NotImplementedException();
+            try
+            {
+                int rowsAffected = 0;
+                using (SQLiteConnection dbConnection = new SQLiteConnection(m_connectionString))
+                {
+                    dbConnection.Open();
+                    using (SQLiteCommand cmd = new SQLiteCommand(dbConnection))
+                    {
+                        cmd.CommandText = "UPDATE ToDoListDataTable SET Mode = "+data.ListMode+" AND Title = '"+data.Title+"' AND Notes = '"+data.Notes+"' AND StartTime = '"+data.StartDate+"' AND EndTime = '"+data.EndDate+"'" +
+                                          "WHERE UserID = '" + userID + "' AND TaskID = '" + data.TaskID + "';";
+                        rowsAffected = cmd.ExecuteNonQuery();
+                    }
+                }
+                return (rowsAffected == 1);
+            }
+            catch (SQLiteException e)
+            {
+                //throw fault exception
+                return false;
+            }
         }
 
         public ToDoListDataModel ReadToDoList(int userID, int taskID)
