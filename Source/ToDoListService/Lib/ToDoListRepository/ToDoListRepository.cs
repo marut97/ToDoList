@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using ToDoListService.Interfaces.IToDoListDataRepository;
 using ToDoListService.Data.ToDoListData;
 using System.Data.SQLite;
+using System.Linq;
 
 namespace ToDoListService.Lib.ToDoListRepository
 {
@@ -88,7 +89,7 @@ namespace ToDoListService.Lib.ToDoListRepository
             }
         }
 
-        public bool DeleteToDoListTask(int userID, ToDoListDataModel data)
+        public bool DeleteToDoListTask(int userID, int taskID)
         {
             try
             {
@@ -98,7 +99,7 @@ namespace ToDoListService.Lib.ToDoListRepository
                     dbConnection.Open();
                     using (SQLiteCommand cmd = new SQLiteCommand(dbConnection))
                     {
-                        cmd.CommandText = "DELETE FROM ToDoListDataTable WHERE UserID = '" + userID + "' AND TaskID = '" + data.TaskID + "';";
+                        cmd.CommandText = "DELETE FROM ToDoListDataTable WHERE UserID = '" + userID + "' AND TaskID = '" + taskID + "';";
                         rowsAffected = cmd.ExecuteNonQuery();
                     }
                 }
@@ -152,27 +153,92 @@ namespace ToDoListService.Lib.ToDoListRepository
 
         public bool CreateReminder(int taskID, Reminder reminderData)
         {
-            throw new NotImplementedException();
+            try
+            {
+                int rowsAffected = 0;
+                using (SQLiteConnection dbConnection = new SQLiteConnection(m_connectionString))
+                {
+                    dbConnection.Open();
+                    using (SQLiteCommand cmd = new SQLiteCommand(dbConnection))
+                    {
+                        cmd.CommandText = "INSERT INTO TaskReminderTable(TaskID, ReminderType, Repeat, ReminderTime, RepeatDays) " +
+                                          "VALUES(" + taskID + "," + reminderData.ReminderType + "," + reminderData.Repeat + "," + reminderData.ReminderTime + ",'" + reminderData.RepeatDays + "');";
+                        rowsAffected = cmd.ExecuteNonQuery();
+                    }
+                }
+                return (rowsAffected == 1);
+            }
+            catch (SQLiteException e)
+            {
+                //throw fault exception
+                return false;
+            }
         }
 
         public bool UpdateReminder(int taskID, Reminder reminderData)
         {
-            throw new NotImplementedException();
+            try
+            {
+                int rowsAffected = 0;
+                using (SQLiteConnection dbConnection = new SQLiteConnection(m_connectionString))
+                {
+                    dbConnection.Open();
+                    using (SQLiteCommand cmd = new SQLiteCommand(dbConnection))
+                    {
+                        cmd.CommandText = "INSERT INTO TaskReminderTable(TaskID, ReminderType, Repeat, ReminderTime, RepeatDays) " +
+                                          "VALUES(" + taskID + "," + reminderData.ReminderType + "," + reminderData.Repeat + "," + reminderData.ReminderTime + ",'" + reminderData.RepeatDays + "');";
+                        rowsAffected = cmd.ExecuteNonQuery();
+                    }
+                }
+                return (rowsAffected == 1);
+            }
+            catch (SQLiteException e)
+            {
+                //throw fault exception
+                return false;
+            }
         }
 
         public bool DeleteReminder(int taskID, int reminderID)
         {
-            throw new NotImplementedException();
+            try
+            {
+                int rowsAffected = 0;
+                using (SQLiteConnection dbConnection = new SQLiteConnection(m_connectionString))
+                {
+                    dbConnection.Open();
+                    using (SQLiteCommand cmd = new SQLiteCommand(dbConnection))
+                    {
+                        cmd.CommandText = "DELETE FROM TaskReminderTable WHERE TaskID = '" + taskID + "' AND ReminderID = '" + reminderID + "';";
+                        rowsAffected = cmd.ExecuteNonQuery();
+                    }
+                }
+                return (rowsAffected == 1);
+            }
+            catch (SQLiteException e)
+            {
+                //throw fault exception
+                return false;
+            }
         }
 
-        public List<Reminder> ReadAllReminders(int userID, int taskID)
+        public List<Reminder> ReadAllReminders(int taskID)
         {
-            throw new NotImplementedException();
+            var query = "SELECT * FROM TaskReminderTable WHERE TaskID = '" + taskID + "'";
+            var reminders = SqlTools.SqlRemindersReader.Read(m_connectionString, query);
+
+            return reminders;
         }
 
         public Reminder ReadReminder(int taskID, int reminderID)
         {
-            throw new NotImplementedException();
+            var query = "SELECT * FROM TaskReminderTable WHERE TaskID = '" + taskID + "' AND ReminderID = '" + reminderID + "' LIMIT 1";
+            var reminders =  SqlTools.SqlRemindersReader.Read(m_connectionString, query);
+
+            if (reminders.Any())
+                return reminders.First();
+
+            return new Reminder();
         }
 
         private readonly string m_connectionString;

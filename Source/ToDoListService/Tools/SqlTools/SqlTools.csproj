@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BD04521C-E27F-4651-BE61-4C619A20D5C3}</ProjectGuid>
+    <ProjectGuid>{DDACD027-EB6F-4C4E-8E6D-8C5E5BE38328}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ToDoListRepository</RootNamespace>
-    <AssemblyName>ToDoListRepository</AssemblyName>
+    <RootNamespace>SqlTools</RootNamespace>
+    <AssemblyName>SqlTools</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -60,26 +60,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ToDoListRepository.cs" />
+    <Compile Include="SqlNonQuery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlRemindersReader.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Data\ToDoListData\ToDoListData.csproj">
       <Project>{ea3ca710-ae40-476d-82c0-c5c249744151}</Project>
       <Name>ToDoListData</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Interfaces\IToDoListDataRepository\IToDoListDataRepository.csproj">
-      <Project>{3cf3e61b-0848-4ba0-871a-a78dee462017}</Project>
-      <Name>IToDoListDataRepository</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Tools\SqlTools\SqlTools.csproj">
-      <Project>{ddacd027-eb6f-4c4e-8e6d-8c5e5be38328}</Project>
-      <Name>SqlTools</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

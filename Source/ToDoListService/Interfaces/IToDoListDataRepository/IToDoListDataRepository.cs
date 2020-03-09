@@ -15,7 +15,7 @@ namespace ToDoListService.Interfaces.IToDoListDataRepository
 
         bool CreateToDoListTask(int userID, ToDoListDataModel data);
 
-        bool DeleteToDoListTask(int userID, ToDoListDataModel data);
+        bool DeleteToDoListTask(int userID, int taskID);
 
         bool UpdateToDoListTask(int userID, ToDoListDataModel data);
 
@@ -31,7 +31,7 @@ namespace ToDoListService.Interfaces.IToDoListDataRepository
 
         bool DeleteReminder(int taskID, int reminderID);
 
-        List<Reminder> ReadAllReminders(int userID, int taskID);
+        List<Reminder> ReadAllReminders(int taskID);
 
         Reminder ReadReminder(int taskID, int reminderID);
 

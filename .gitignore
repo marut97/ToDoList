@@ -28,3 +28,5 @@ Source/ToDoListService/Data/ToDoListData/obj
 Source/ToDoListService/Data/ToDoListData/bin
 Source/ToDoListService/Lib/ToDoListRepository/obj
 Source/ToDoListService/Lib/ToDoListRepository/bin
+Source/ToDoListService/Tools/SqlTools/obj
+Source/ToDoListService/Tools/SqlTools/bin
